@@ -1,0 +1,29 @@
+<ion-menu [content]="nav">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu Utama</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <button ion-item (click)="onLoad(rootPage)" *ngIf="isAuthenticated">
+        <ion-icon name="home" item-left></ion-icon>
+        Home Page
+      </button>
+      <button ion-item (click)="onLoad(signupPage)" *ngIf="!isAuthenticated">
+        <ion-icon name="contact" item-left></ion-icon>
+        Daftar
+      </button>
+      <button ion-item (click)="onLoad(signinPage)" *ngIf="!isAuthenticated">
+        <ion-icon name="log-in" item-left></ion-icon>
+        Masuk
+      </button>
+      <button ion-item (click)="onLogout()" *ngIf="isAuthenticated">
+        <ion-icon name="settings" item-left></ion-icon>
+        Keluar
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav [root]="rootPage" #nav></ion-nav>

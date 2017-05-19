@@ -1,0 +1,86 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    </ion-buttons>
+    <ion-title>Profil</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <!-- input -->
+  <ion-card>
+    <form (ngSubmit)="onSubmit()">
+      <ion-item>
+        <ion-label>
+          ID:
+        </ion-label>
+        <ion-input type="text" [(ngModel)]="perkaraID" name="perkaraID"></ion-input>
+      </ion-item>
+      <hr />
+      <button ion-button type="submit" clear small > Cari </button>
+    </form>
+    <button ion-button clear small (click)="reset()">Reset</button>
+  </ion-card>
+  <ion-card *ngIf="profiles">
+    <ion-item>
+      <p align="center">Nomor Perkara Anda Adalah</p>
+      <h2 align="center"><strong>{{profiles.nomor_perkara}}</strong></h2>
+    </ion-item>
+  </ion-card>
+  <!-- data umum -->
+   <button ion-button icon-left clear small (click)="showInfo(profiles.perkara_id)">
+    <ion-icon name="home"></ion-icon>Data Umum
+  </button>
+   <ion-card *ngIf="info" >
+  <ion-item (click)="infoDetil($event, info)">
+  <h2>Data Umum</h2>
+  <h2>{{info.tanggal_pendaftaran}}</h2>
+  </ion-item>
+  </ion-card>
+  <br />
+  <!-- End data umum -->
+  <!-- Sidang -->
+  <button ion-button icon-left clear small (click)="showSidang(profiles.perkara_id)">
+    <ion-icon name="person"></ion-icon>Agenda Sidang
+  </button>
+  <ion-card *ngIf="sidang" >
+    <ion-list>
+      <ion-item *ngFor="let sid of sidang" (click)="sidTapped($event, sid)">
+      <h2>Informasi Agenda Sidang</h2>
+        <h2>Sidang Ke: {{sid.urutan}}</h2>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+  <br />
+  <!-- end sidang -->
+  <!-- keuangan perkara -->
+  <button ion-button icon-left clear small (click)="showKeu(profiles.perkara_id)">
+    <ion-icon name="book"></ion-icon>Keuangan Perkara
+  </button>
+  <ion-card *ngIf="keuangan" >
+    <ion-list>
+      <ion-item *ngFor="let keu of keuangan" (click)="keuTapped($event, keu)">
+      <h2>Transaksi Keuangan</h2>
+        <h2>{{keu.id}}</h2>
+        <p>{{keu.tanggal_transaksi}}</p>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+  <br />
+  <!-- end keuangan perkara -->
+  <!-- Akte Cerai -->
+  <button ion-button icon-left clear small (click)="showAc(profiles.perkara_id)">
+    <ion-icon name="disc"></ion-icon>Akte Cerai
+  </button>
+  <ion-card *ngIf="aktecerai" >
+  <ion-item (click)="acDetil($event, aktecerai)">
+  <h2>Informasi Akte Cerai</h2>
+  <h2>{{aktecerai.nomor_akta_cerai}}</h2>
+  </ion-item>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,26 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+  </ion-buttons>
+    <ion-title>Detil Sidang Ke: <strong>{{sidangdetil.urutan}}</strong></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-card  >
+ 	<ion-item>
+ 		<ion-icon name="cube"></ion-icon> <strong>Sidang Detail</strong>
+ 		  <h1>{{sidangdetil.tanggal_sidang}}</h1>
+		  <h1>{{sidangdetil.jam_sidang}}</h1>
+	 	  <p>{{sidangdetil.agenda}}</p>
+	    <p>{{sidangdetil.pihak1_text}}</p>
+	    <p>{{sidangdetil.pihak2_text}}</p>
+		</ion-item>
+  </ion-card>
+
+</ion-content>
